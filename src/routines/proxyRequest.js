@@ -77,7 +77,6 @@ const proxyRequest = async (proxyRequestConfiguration: ProxyRequestConfiguration
   }
 
   const headers = appendDefaultChromeHeaders(request);
-
   log.debug({
     body: request.postData(),
     headers,
@@ -85,6 +84,7 @@ const proxyRequest = async (proxyRequestConfiguration: ProxyRequestConfiguration
     url: request.url(),
   }, 'making a request using HTTP proxy');
 
+  console.log("getting cookies");
   const puppeteerCookies = (await getAllCookies(page)).cookies;
 
   const cookieJar = CookieJar.deserializeSync({
@@ -128,6 +128,7 @@ const proxyRequest = async (proxyRequestConfiguration: ProxyRequestConfiguration
   let response;
 
   try {
+    console.log("making request");
     response = await got(request.url(), {
       agent,
       body: request.postData(),
@@ -140,6 +141,7 @@ const proxyRequest = async (proxyRequestConfiguration: ProxyRequestConfiguration
       throwHttpErrors: false,
     });
   } catch (error) {
+    console.log("GOT damnit", error);
     log.error({
       error: serializeError(error),
     }, 'could not complete HTTP request due to an error');
@@ -153,6 +155,7 @@ const proxyRequest = async (proxyRequestConfiguration: ProxyRequestConfiguration
     throw new Error('response object is not present.');
   }
 
+  consoe.log("responding");
   await request.respond({
     body: response.body,
     headers: response.headers,
@@ -164,6 +167,7 @@ export default async (proxyRequestConfiguration: ProxyRequestConfigurationType) 
   try {
     await proxyRequest(proxyRequestConfiguration);
   } catch (error) {
+    console.log("config error", error);
     log.error({
       error: serializeError(error),
     }, 'could not proxy request due to an error');
