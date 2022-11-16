@@ -56,6 +56,7 @@ const proxyRequest = async proxyRequestConfiguration => {
     request
   } = proxyRequestConfiguration;
 
+  console.log("CONFIG", proxyRequestConfiguration);
   // e.g. data URI scheme
   if (!request.url().startsWith('http://') && !request.url().startsWith('https://')) {
     request.continue();
