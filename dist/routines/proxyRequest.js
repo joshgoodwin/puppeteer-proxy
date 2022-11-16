@@ -56,7 +56,7 @@ const proxyRequest = async proxyRequestConfiguration => {
     request
   } = proxyRequestConfiguration;
 
-  console.log("CONFIG", proxyRequestConfiguration);
+  console.log("PROXY CONFIG", proxyRequestConfiguration);
   // e.g. data URI scheme
   if (!request.url().startsWith('http://') && !request.url().startsWith('https://')) {
     request.continue();
@@ -69,6 +69,7 @@ const proxyRequest = async proxyRequestConfiguration => {
     method: request.method(),
     url: request.url()
   }, 'making a request using HTTP proxy');
+  
   console.log("getting cookies");
   const puppeteerCookies = (await (0, _getAllCookies.default)(page)).cookies;
   const cookieJar = _toughCookie.CookieJar.deserializeSync({
