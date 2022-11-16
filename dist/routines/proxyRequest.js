@@ -5,7 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _util = require("util");
-var _got = require("got");
+import got from 'got';
+const _got = got;
 var _toughCookie = require("tough-cookie");
 var _serializeError = require("serialize-error");
 var _httpProxyAgent = _interopRequireDefault(require("http-proxy-agent"));
