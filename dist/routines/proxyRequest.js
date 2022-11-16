@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _util = require("util");
-var _got = _interopRequireDefault(require("got"));
+var _got = require("got");
 var _toughCookie = require("tough-cookie");
 var _serializeError = require("serialize-error");
 var _httpProxyAgent = _interopRequireDefault(require("http-proxy-agent"));
@@ -69,7 +69,7 @@ const proxyRequest = async proxyRequestConfiguration => {
     method: request.method(),
     url: request.url()
   }, 'making a request using HTTP proxy');
-  
+
   console.log("getting cookies");
   const puppeteerCookies = (await (0, _getAllCookies.default)(page)).cookies;
   const cookieJar = _toughCookie.CookieJar.deserializeSync({
