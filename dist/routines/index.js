@@ -16,6 +16,6 @@ Object.defineProperty(exports, "proxyRequest", {
   }
 });
 var _getAllCookies = _interopRequireDefault(require("./getAllCookies"));
-var _proxyRequest = _interopRequireDefault(require("./proxyRequest"));
+var _proxyRequest = require("./proxyRequest");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 //# sourceMappingURL=index.js.map
